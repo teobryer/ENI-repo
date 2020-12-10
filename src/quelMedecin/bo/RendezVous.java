@@ -14,7 +14,7 @@ public class RendezVous {
         this.creneau = creneau;
         this.patient = patient;
         this.date = date;
-    }
+    } // test
 
     public void afficher() {
         System.out.println("Rendez-vous du " + this.date.format(DateTimeFormatter.ofPattern
