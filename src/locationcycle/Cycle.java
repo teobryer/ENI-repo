@@ -6,7 +6,7 @@ public abstract class Cycle {
 
     private String marque, modele;
     private LocalDate dateAchat;
-    private static double tarif;
+    private double tarif;
 
     public Cycle(LocalDate dateAchat, String marque, String modele) {
         this.marque = marque;
@@ -26,12 +26,12 @@ public abstract class Cycle {
         return dateAchat;
     }
 
-    public static double getTarif() {
+    public  double getTarif() {
         return tarif;
     }
 
-    public static void setTarif(double tarif) {
-        Cycle.tarif = tarif;
+    public  void setTarif(double tarif) {
+        this.tarif = tarif;
     }
 
     public abstract String toString();
