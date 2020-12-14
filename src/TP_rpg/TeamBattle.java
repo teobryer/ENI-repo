@@ -109,7 +109,7 @@ public class TeamBattle {
              {
                  System.out.println(gm);
               }
-        System.out.println("###############################"  +  " TEAM " + this.name + " ###############################");
+     //   System.out.println("###############################"  +  " TEAM " + this.name + " ###############################");
 
     }
 }

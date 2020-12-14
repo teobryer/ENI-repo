@@ -24,6 +24,7 @@ public class GameCharacter {
 
     public void setBot(boolean bot) {
         isBot = bot;
+        name += "-BOT";
     }
 
     public int getAtk() {

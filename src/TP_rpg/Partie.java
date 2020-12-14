@@ -34,6 +34,7 @@ public class Partie {
         team2B.afficherEquipe();
 
         List<GameCharacter> listTPT = ListeOrdonneeTourParTour(team1B, team2B);
+        System.out.println("###############################"  +  " ORDRES DES TOURS DE JEU" + " ###############################");
         for (GameCharacter  c :listTPT) {
             System.out.println(c.afficherInfos() );       }
 
@@ -94,6 +95,7 @@ public class Partie {
     public static void StartGame(TeamBattle t1, TeamBattle t2, List<GameCharacter> listeOrdonnee) throws InterruptedException {
         Loading("Début du jeu");
         int cpt = 0;
+        GameCharacter selectedEnemy = null;
         while(!t1.teamIsDead() && !t2.teamIsDead()){
             for (GameCharacter actualPlayer : listeOrdonnee){
 
@@ -102,22 +104,30 @@ public class Partie {
                 }
                 else{
                     Loading("Au tour de " + actualPlayer.getName());
-                }
-                if(!actualPlayer.isBot()){
-                    System.out.println("Qui voulez vous attaquer ? : ");
-                    actualPlayer.getTeam().DisplayAllCharacterEnemies();
 
-                    Scanner scanner = new Scanner( System.in );
-                     int a = scanner.nextInt();
-                    GameCharacter selectedEnemy = actualPlayer.getTeam().getAllCharacterEnnemies().get(a);
+                    if(!actualPlayer.isBot()){
+                        System.out.println("Qui voulez vous attaquer ? : ");
+                        actualPlayer.getTeam().DisplayAllCharacterEnemies();
+
+                        Scanner scanner = new Scanner( System.in );
+                        int a = scanner.nextInt();
+                        selectedEnemy = actualPlayer.getTeam().getAllCharacterEnnemies().get(a);
+
+
+
+
+
+                    }
+                    if( actualPlayer.isBot()){
+
+                        int randomEnemy = (int) Math.random() * (  (actualPlayer.getTeam().getAllCharacterEnnemies().size()-1) - 0 );
+                        selectedEnemy = actualPlayer.getTeam().getAllCharacterEnnemies().get(randomEnemy);
+                    }
                     actualPlayer.attaquer(selectedEnemy);
                     System.out.println(actualPlayer.getName() + " a attaqué " + selectedEnemy.getName());
                     System.out.println("Points de vies de " + selectedEnemy.getName() + " : " +  selectedEnemy.getHp());
-
-
-
-
                 }
+
             }
         }
         Loading("VICTOIRE DE LA TEAM.....");
