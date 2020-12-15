@@ -33,7 +33,7 @@ public class Partie {
         team1B.afficherEquipe();
         team2B.afficherEquipe();
 
-        List<GameCharacter> listTPT = ListeOrdonneeTourParTour(team1B, team2B);
+        List<GameCharacter> listTPT = ListeOrdonneeTourParTour(team2B, team1B);
         System.out.println("###############################"  +  " ORDRES DES TOURS DE JEU" + " ###############################");
         for (GameCharacter  c :listTPT) {
             System.out.println(c.afficherInfos() );       }
@@ -126,6 +126,10 @@ public class Partie {
                     actualPlayer.attaquer(selectedEnemy);
                     System.out.println(actualPlayer.getName() + " a attaqué " + selectedEnemy.getName());
                     System.out.println("Points de vies de " + selectedEnemy.getName() + " : " +  selectedEnemy.getHp());
+
+                    if (t1.teamIsDead() || t2.teamIsDead()) {
+                        break;
+                    }
                 }
 
             }
